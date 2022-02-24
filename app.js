@@ -71,16 +71,25 @@ app.post('/upload', (req, res) => {
 });
 
 
-app.delete('/delete/:files', (req, res, next) => {
+// app.delete('/delete/:files', (req, res, next) => {
+//     const deletefile = 'public/uploads/' + req.params.file;
+//     fs.unlink(deletefile, (err) => {
+//         if (err) { return err }
+//         fs.readdir('public/uploads', (err, files) => {
+//             res.send(req.params.file + ' is Deleted')
+//         })
+//     })
+// })
+// delete file in multer 
+app.delete('/delete/:file', (req, res, next) => {
     const deletefile = 'public/uploads/' + req.params.file;
     fs.unlink(deletefile, (err) => {
         if (err) { return err }
-        fs.readdir('public/uploads', (err, files) => {
+        fs.readdir('/public/uploads', (err, files) => {
             res.send(req.params.file + ' is Deleted')
         })
     })
 })
-
 
 const port = 3000;
 
